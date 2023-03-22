@@ -84,7 +84,7 @@ export default {
     }
 
     &__label {
-      color: #fff;
+      color: var(--color-text);
       display: block;
     }
 

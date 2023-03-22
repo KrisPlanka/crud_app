@@ -20,7 +20,7 @@
 }
 
 .text-accent {
-  color: white;
+  color: var(--color-heading);
   font-size: 30px;
   padding-right: 20px;
 }
@@ -46,10 +46,10 @@
 
 .btn {
     display: inline-block;
-    background: #efefef;
+    background: var(--vt-c-text-dark-1);;
     padding: 12px 24px;
     border-radius: 5px;
-    color: #222;
+    color: var(--color-background);
     text-decoration: none;
     font-size: 18px;
     border: none;
@@ -64,7 +64,7 @@
 }
 
 .btn:hover {
-    background: #c6c6c6;
+    background: var(--vt-c-text-dark-2);
 }
 
 .btn--green {
