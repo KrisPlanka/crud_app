@@ -12,6 +12,7 @@ The following features are available in this application:
 - Delete user
 - Create event
 - Read event
+- Pagination and sorting by fields
 - User dashboard displaying all created users, along with events count and next event date
 - User profile page displaying user info and related events
 
