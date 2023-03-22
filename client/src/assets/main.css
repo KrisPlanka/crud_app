@@ -1,0 +1,78 @@
+@import './base.css';
+
+.container {
+    max-width: 80vw;
+    margin: auto;
+    padding: 24px;
+}
+
+.block {
+  margin-bottom: 40px;
+}
+
+.text {
+  font-size: 25px;
+  letter-spacing: 1px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-accent {
+  color: white;
+  font-size: 30px;
+  padding-right: 20px;
+}
+
+@media screen and (max-width: 428px) {
+    .container {
+        max-width: 95vw;
+        margin: auto;
+        padding: 12px;
+    }
+}
+
+.heading {
+    margin-bottom: 24px;
+    font-size: 50px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 50px;
+}
+
+.btn {
+    display: inline-block;
+    background: #efefef;
+    padding: 12px 24px;
+    border-radius: 5px;
+    color: #222;
+    text-decoration: none;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s all ease;
+    margin-top: 20px;
+}
+
+.btn--small {
+  font-size: 14px;
+  padding: 12px;
+}
+
+.btn:hover {
+    background: #c6c6c6;
+}
+
+.btn--green {
+  background: rgb(26, 124, 26);
+  color: #efefef;
+}
+
+.btn--yellow {
+  background: rgb(69, 68, 67);
+  color: #efefef;
+}
