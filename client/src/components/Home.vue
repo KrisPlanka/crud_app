@@ -1,6 +1,12 @@
 <template>
   <div>
     <h1 class="heading">User List</h1>
+    <select class="select" v-model="sortBy" name="" @change="sortUsers" id="">
+      <option value="">Sort by</option>
+      <option value="name">Name</option>
+      <option value="eventCount">Events count </option>
+      <option value="email">email</option>
+    </select>
     <table class="table">
       <thead >
         <tr class="table__header">
@@ -49,16 +55,32 @@
               Delete
             </button>
           </td>
-          
         </tr>
       </tbody>
     </table>
-    <a href="#/create-user" class="btn">Create user</a>
+    <div class="pagination-wrapper">
+      <button
+        class="btn btn--pagination"
+        @click="prevPage"
+        :disabled="currentPage === 1"
+      >
+        prev
+      </button>
+      <button
+        class="btn btn--pagination"
+        @click="nextPage"
+      >
+        next
+      </button>
+    </div>
+    <div>
+      <a href="#/create-user" class="btn">Create user</a>
+    </div>
   </div>
 </template>
 <script>
 import axios from 'axios';
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 
 export default {
   setup() {
@@ -67,9 +89,46 @@ export default {
       error: null
     });
 
-    const getUsers = async () => {
+    const sortBy = ref('');
+  
+    const sortUsers = () => {
+      switch (sortBy.value) {
+        case 'name':
+          userList.data.sort((a, b) => a.firstName.localeCompare(b.firstName));
+          break;
+        case 'eventCount':
+          userList.data.sort((a, b) => b.events.length - a.events.length);
+          break;
+        case 'email':
+          userList.data.sort((a, b) => a.email.localeCompare(b.email));
+          break;
+        default:
+          break;
+      }
+    }
+
+    const currentPage = ref(1)
+
+    const nextPage = () => {
+      currentPage.value++;
+      getUsers(currentPage.value, 5);
+    };
+
+    const prevPage = () => {
+      if (currentPage.value > 1) {
+        currentPage.value--;
+        getUsers(currentPage.value, 5);
+      }
+    };
+
+    const getUsers = async (page = 1, limit = 5) => {
       try {
-        const response = await axios.get('http://localhost:3000/users');
+        const response = await axios.get('http://localhost:3000/users', {
+          params: {
+            page: page,
+            limit: limit
+          }
+        });
         userList.data = response.data;
       } catch (error) {
         userList.error = error.message;
@@ -102,7 +161,12 @@ export default {
     return {
       userList,
       deleteUser,
-      findNearestEvent
+      findNearestEvent,
+      sortBy,
+      sortUsers,
+      currentPage,
+      nextPage,
+      prevPage
     };
   }
 }
@@ -122,7 +186,7 @@ export default {
   }
   .table {
     width: 80%;
-    margin-bottom: 50px;
+    margin-bottom: 15px;
 
     &__link {
       color: rgb(195, 128, 247);

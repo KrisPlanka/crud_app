@@ -33,9 +33,23 @@
     }
 }
 
+.select {
+  margin-bottom: 20px;
+  width: 150px;
+  height: 30px;
+}
+
 .heading {
     margin-bottom: 24px;
     font-size: 50px;
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  font-size: 18px;
+  gap: 10px;
 }
 
 .buttons {
@@ -61,6 +75,12 @@
 .btn--small {
   font-size: 14px;
   padding: 12px;
+}
+
+.btn--pagination {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 5px 10px;
 }
 
 .btn:hover {

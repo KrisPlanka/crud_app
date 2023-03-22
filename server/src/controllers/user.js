@@ -1,11 +1,21 @@
 const userServices = require('../services/user')
+import { User } from '../../models/user';
+
 
 export const getUsers = async (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 5;
+  const offset = (page - 1) * limit;
+
   try {
-    const users = await userServices.getAll();
-    res.status(200).json(users);
-  } catch (e) {
-    res.status(500).json(e);
+    const users = await User.find().skip(offset).limit(limit).populate({
+      path: 'events',
+      options: { sort: { startDate: 1 } },
+    });
+    res.json(users);
+  } catch (err) {
+    console.log(err)
+    res.status(500).json({ error: err.message });
   }
 };
 
