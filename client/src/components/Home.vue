@@ -49,7 +49,7 @@
           </td>
           <td class="text-center">
             <button
-              class="btn btn--small btn--yellow"
+              class="btn btn--small btn--grey"
               @click="deleteUser(user._id)"
             >
               Delete
@@ -60,15 +60,16 @@
     </table>
     <div class="pagination-wrapper">
       <button
-        class="btn btn--pagination"
+        class="btn btn--pagination btn--grey"
         @click="prevPage"
         :disabled="currentPage === 1"
       >
         prev
       </button>
       <button
-        class="btn btn--pagination"
+        class="btn btn--pagination btn--grey"
         @click="nextPage"
+        :disabled="userList.data.length < 1"
       >
         next
       </button>

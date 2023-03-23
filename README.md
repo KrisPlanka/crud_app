@@ -54,9 +54,6 @@ npm start
 5. Open new terminal window
 6. Proceed to client directory
 ``` console
-cd ..
-```
-``` console
 cd client
 ```
 7. Type following commands:
