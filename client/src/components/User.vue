@@ -164,7 +164,7 @@ export default {
       list-style: decimal;
       max-height: 400px;
       overflow-y: auto;
-      padding: 24px;
+      padding: 0 24px 24px;
     }
 
     &__events-item {
