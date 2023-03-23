@@ -1,22 +1,25 @@
 <template>
-  <div class="container block">
+  <div class="container">
     <h1 class="heading">
       User Page
     </h1>
-    <div class="block" v-if="user">
-      <p class="text"><span class="text-accent">First Name: </span>{{ user.firstName }}</p>
-      <p class="text"><span class="text-accent">Last Name:</span>{{ user.lastName }}</p>
-      <p class="text"><span class="text-accent">Email:</span>{{ user.email }} </p>
-      <p class="text"><span class="text-accent">Phone Number:</span>{{ user.phoneNumber }}</p>
-      <p class="text"><span class="text-accent">Events:</span></p>
-        <ul>
-          <li v-for="(event, index) in user.events" :key="index">
-            <p class="text"><span class="text-accent">Title:</span>{{ event.title }}</p>
-            <p class="text"><span class="text-accent">Description:</span>{{ event.description }}</p>
-            <p class="text"><span class="text-accent">Start Date</span>{{ event.startDate.slice(0,10) }}</p>
-            <p class="text"><span class="text-accent">End Date</span>{{ event.endDate.slice(0,10) }}</p>
-          </li>
-        </ul>
+    <div class="user-block" v-if="user">
+      <div class="user-block__info">
+        <p class="user-block__text"><span class="user-block__text-accent">First Name: </span>{{ user.firstName }}</p>
+        <p class="user-block__text"><span class="user-block__text-accent">Last Name: </span>{{ user.lastName }}</p>
+        <p class="user-block__text"><span class="user-block__text-accent">Email: </span>{{ user.email }} </p>
+        <p class="user-block__text"><span class="user-block__text-accent">Phone Number: </span>{{ user.phoneNumber }}</p>
+        <p class="user-block__text"><span class="user-block__text-accent">Events: </span> {{ user.events.length }}</p>
+      </div>
+      <ul class="user-block__events">
+        <li class="user-block__events-item" v-for="(event, index) in user.events" :key="index">
+          <p class="user-block__text"><span class="user-block__text-accent">Event: </span></p>
+          <p class="user-block__text"><span class="user-block__text-accent">Title: </span>{{ event.title }}</p>
+          <p class="user-block__text"><span class="user-block__text-accent">Description: </span>{{ event.description }}</p>
+          <p class="user-block__text"><span class="user-block__text-accent">Start Date </span>{{ event.startDate.slice(0,10) }}</p>
+          <p class="user-block__text"><span class="user-block__text-accent">End Date </span>{{ event.endDate.slice(0,10) }}</p>
+        </li>
+      </ul>
     </div>
     <div v-else>
       <p>Loading user data...</p>
@@ -145,3 +148,36 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+  .user-block {
+    display: flex;
+    justify-content: space-between;
+
+    &__info {
+      max-width: 500px;
+      width: 100%;
+    }
+
+    &__events {
+      max-width: 500px;
+      width: 100%;
+      list-style: decimal;
+      max-height: 400px;
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    &__events-item {
+      margin-bottom: 15px;
+    }
+
+    &__text {
+      font-size: 16px;
+    }
+
+    &__text-accent {
+      font-weight: bold;
+      color: var(--color-heading);
+    }
+  }
+</style>

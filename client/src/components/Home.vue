@@ -66,6 +66,7 @@
       >
         prev
       </button>
+        <div class="pagination-label">{{currentPage}}</div>
       <button
         class="btn btn--pagination btn--grey"
         @click="nextPage"
@@ -109,6 +110,7 @@ export default {
     }
 
     const currentPage = ref(1)
+    
 
     const nextPage = () => {
       currentPage.value++;

@@ -60,7 +60,7 @@
 
 .btn {
     display: inline-block;
-    background: rgb(195, 128, 247);;
+    background: rgb(195, 128, 247);
     padding: 12px 24px;
     border-radius: 5px;
     color: var(--color-background);
@@ -70,6 +70,11 @@
     cursor: pointer;
     transition: 0.2s all ease;
     margin-top: 20px;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .btn--small {
@@ -85,10 +90,17 @@
 
 .btn:hover {
     background: var(--vt-c-text-dark-2);
-    color: rgb(195, 128, 247);;
+    color: rgb(195, 128, 247);
 }
 
 .btn--grey {
   background: rgb(69, 68, 67);
   color: #efefef;
+}
+
+.pagination-label {
+  padding: 5px 10px;
+  display: inline-block;
+  margin-top: 20px;
+  font-weight: bold;
 }
