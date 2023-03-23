@@ -70,7 +70,7 @@
       <button
         class="btn btn--pagination btn--grey"
         @click="nextPage"
-        :disabled="userList.data.length < 1"
+        :disabled="userList.data.length < 5"
       >
         next
       </button>

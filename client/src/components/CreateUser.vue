@@ -16,7 +16,7 @@
         </div>
         <div class="form__item">
           <label for="phoneNumber" class="form__label">Phone Number</label>
-          <input placeholder="099-999-99-99" type="tel" class="form__control" id="phoneNumber" v-model="phoneNumber">
+          <input placeholder="099-999-99-99" type="tel" pattern="[\+]?[\d-]+" class="form__control" id="phoneNumber" v-model="phoneNumber">
         </div>
         <button type="submit" class="btn">Create User</button>
       </form>
